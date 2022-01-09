@@ -26,7 +26,7 @@ export const loginUser = (email, password) => async dispatch => {
     })
   }
 }
-export const registerUser = champs => async dispatch => {
+export const registerUser = body => async dispatch => {
   try {
     dispatch({ type: USER_LOGIN_REQUEST })
     const config = {
@@ -34,7 +34,7 @@ export const registerUser = champs => async dispatch => {
         'content-type': 'application/json',
       },
     }
-    const { data } = await axios.post('/api/register', champs, config)
+    const { data } = await axios.post('http://127.0.0.1/E-DOC/api/Patient/register.php',body, config)
     dispatch({ type: USER_LOGIN_SUCCESS, payload: data })
     localStorage.setItem('userInfo', JSON.stringify(data))
   } catch (err) {

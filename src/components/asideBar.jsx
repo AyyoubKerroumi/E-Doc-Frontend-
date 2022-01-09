@@ -35,6 +35,13 @@ const logou = () => dispatch(logout())
                     <h4>Calendrier</h4>
                 </Lnk>
               </Link>
+              <Link to='/secretaryZone/ListRdv'>
+                <Lnk>
+                  
+                    <VscCalendar />
+                    <h4>Listes Des Rendez-Vous</h4>
+                </Lnk>
+              </Link>
               <Link to='/secretaryZone/listePatients'>
                 <Lnk>
                     <FaWallet />

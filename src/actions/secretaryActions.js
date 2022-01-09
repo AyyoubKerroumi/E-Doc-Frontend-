@@ -13,7 +13,7 @@ export const loginUser = (email, password) => async dispatch => {
         'content-type': 'application/json',
       },
     }
-    const { data } = await axios.post('http://127.0.0.1/E-DOC/api/Secretaire/login.php', { email, password }, config)
+    const { data } = await axios.post('http://127.0.0.1:80/E-DOC/api/Secretaire/login.php', { email, password }, config)
     dispatch({ type: USER_LOGIN_SUCCESS, payload: data })
     localStorage.setItem('userInfo', JSON.stringify(data))
   } catch (err) {
@@ -26,28 +26,6 @@ export const loginUser = (email, password) => async dispatch => {
     })
   }
 }
-export const registerUser = champs => async dispatch => {
-  try {
-    dispatch({ type: USER_LOGIN_REQUEST })
-    const config = {
-      headers: {
-        'content-type': 'application/json',
-      },
-    }
-    const { data } = await axios.post('/api/register', champs, config)
-    dispatch({ type: USER_LOGIN_SUCCESS, payload: data })
-    localStorage.setItem('userInfo', JSON.stringify(data))
-  } catch (err) {
-    dispatch({
-      type: USER_LOGIN_FAIL,
-      payload:
-        err.response && err.response.data.message
-          ? err.response.data.message
-          : err.message,
-    })
-  }
-}
-
 export const logout = () => async dispatch => {
   dispatch({ type: USER_LOGOUT })
   localStorage.removeItem('userInfo')

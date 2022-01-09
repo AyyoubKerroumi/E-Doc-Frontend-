@@ -24,7 +24,7 @@ function Appointment() {
     const month1 = startDate.getMonth();
     const year = startDate.getFullYear();
     const fullDate = day + " " + month + " " + year;
-    const fullDate1 = month1 + 1 + "/" + day + "/" + year;
+    const fullDate1 = year + "/" + month1 + 1 + "/" + day;
 
     const addDuree = (time,duree)=>{
         const words = time.split(":");
@@ -47,18 +47,21 @@ function Appointment() {
     }
 
     const makeRdvData = (data)=>{
-        //console.log(data?.M?.dispo);
+        console.log(data?.M?.dispo);
         let Rdv = new Array();
         let dispoM = data?.M?.dispo;
         let dsipoS = data?.S?.dispo;
+        console.log(dsipoS);
         let duree = data?.D;
         let debutM = data?.M?.heure;
         let debutS = data?.S?.heure;
         let dispo = [];
-        //ajputer les Rendez-Vous du matin
+        //ajouter les Rendez-Vous du matin
         for(let i=0; i<dispoM.length; i++){
             dispo.push(addDuree(debutM,dispoM[i]*duree));
             Rdv.push({
+                "M_S":'M',
+                "ordre":dispoM[i] + 1,
                 "key":i+1,
                 "time":addDuree(debutM,dispoM[i]*duree)
             })
@@ -67,6 +70,8 @@ function Appointment() {
         for(let i=0; i<dsipoS.length; i++){
             dispo.push(addDuree(debutS,dsipoS[i]*duree));
             Rdv.push({
+                "M_S":'S',
+                "ordre":dsipoS[i] + 1,
                 "key":i + dispoM.length + 1 ,
                 "time":addDuree(debutS,dsipoS[i]*duree)
             })
@@ -84,8 +89,11 @@ function Appointment() {
         const body = {"day":fullDate , "orderDay":1};
         fetch("http://127.0.0.1/E-DOC/api/listeREndezVous.php", {
             method: "post",
+            headers: { 
+                "Authorization":'Bearer '+userInfo?.jwt,
+            },
             body: JSON.stringify(body)
-        })
+        },{headers: {authorization :`Bearer ${userInfo?.jwt}`}})
             .then(res => res.json())
             .then(data => {
                 makeRdvData(data);
@@ -108,13 +116,16 @@ function Appointment() {
                         </div>
                     </div>
                 </div>
-                <div className="available">
+                {RdvData.length>0 && <div className="available">
                     <h3>Les Rendez-vous Disponibles en {fullDate}</h3>
-                </div>
+                </div>}
                 <div className="container">
                 <div className="row">
                     {
                         RdvData.map(app => <RdvCard
+                            ordre={app.ordre}
+                            token = {userInfo?.jwt}
+                            M_S = {app.M_S}
                             key={app.key}
                             appointmentData={app}
                             fullDate1={fullDate1}

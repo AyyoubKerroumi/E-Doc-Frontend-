@@ -1,18 +1,8 @@
-import React,{ useState,useEffect} from 'react';
+import React from 'react';
 import './CSS/CardList.css';
 
-function CardList() {
-    const [item,setItem] = useState([]);
-    useEffect(() => {
-        fetch("http://127.0.0.1/E-DOC/api/Secretaire/listePatients.php")
-        .then(res => res.json())
-        .then(
-            (result) =>{
-                setItem(result);
-                console.log(result);
-            }
-        )
-    })
+
+function CardList({patients}) {
     return (
         <div className="row" >
             <div className="d_flex my-4, text-uppercase">
@@ -30,7 +20,7 @@ function CardList() {
                 </thead>
                 <tbody>
                     {
-                        item.map(item =>(
+                        patients.map(item =>(
                             <tr key={item.id}>
                                 <td>{item.name}</td>
                                 <td>{item.cin}</td>
@@ -46,4 +36,4 @@ function CardList() {
     )
 }
 
-export default CardList
+export default CardList;

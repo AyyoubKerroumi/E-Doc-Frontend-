@@ -1,10 +1,9 @@
 import React from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import Home from './components/Home'
-import Navbar from './components/Navbar'
 import Login from './components/SecretaryZone/Login';
 import LoginP from './components/PatientZone/LoginP';
 import Dashbord from './components/SecretaryZone/dashbord';
+import ListRdv from './components/SecretaryZone/ListRdv';
 import ListPatient from './components/SecretaryZone/ListPatient';
 import Register from './components/PatientZone/Register'
 import Welcome from './components/Welcome'
@@ -20,6 +19,7 @@ const App = () => {
           <Route path='/PatientZone/login' element={<LoginP />} />
           <Route path='/PatientZone/register' element={<Register />} />
           <Route path='/secretaryZone/secretaryDashbord' element={<Dashbord />} />
+          <Route path='/secretaryZone/ListRdv' element={<ListRdv />} />
           <Route path='/secretaryZone/listePatients' element={<ListPatient />} />
           <Route path='/secretaryZone/calendar' element={<Appointment />} />
         </Routes>

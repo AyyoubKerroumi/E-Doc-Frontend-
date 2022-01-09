@@ -15,15 +15,14 @@ const Register = () => {
   const [name, setName] = useState('')
   const userLogin = useSelector(state => state.userLogin)
   const { userInfo, loading, error } = userLogin
-  console.log(userInfo);
   useEffect(() => {
     if (userInfo) {
-      navigate('/secretaryDashbord')
+      navigate('/')
     }
   }, [navigate, userInfo])
   const onSubmit = e => {
     e.preventDefault()
-    dispatch(registerUser(email, password,name,cin))
+    dispatch(registerUser({email, password,name,cin}))
   }
   return (
     <section id="main">
