@@ -2,11 +2,10 @@ import React, { useState, useEffect } from 'react'
 import '../CSS/Login.css';
 import Loader from '../Loader'
 import Message from '../Message'
-import Navbar from '../Navbar'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { loginUser } from '../../actions/secretaryActions'
-const Login = () => {
+import { loginUser } from '../../actions/medecinActions'
+const LoginM = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const [email, setEmail] = useState('')
@@ -16,7 +15,7 @@ const Login = () => {
   console.log(userInfo);
   useEffect(() => {
     if (userInfo) {
-      navigate('/secretaryDashbord')
+      navigate('/MedecinZone/Accueil')
     }
   }, [navigate, userInfo])
   const onSubmit = e => {
@@ -25,7 +24,6 @@ const Login = () => {
   }
   return (
     <section id="main">
-      <Navbar/>
     <h3 class="title">Bienvenue Dans
       <span class="special-word"> E-Doc</span></h3>
       <div class="card">
@@ -60,11 +58,11 @@ const Login = () => {
             </form>
           </div>
         </div>
-        <div class="card-image">
+        <div class="card-image-doc">
         </div>
       </div>
   </section>
   )
 }
 
-export default Login
+export default LoginM;

@@ -1,59 +1,50 @@
 import {React} from 'react'
 import { Link } from 'react-router-dom'
-import secretary from '../images/secretary.png';
+import medecin from '../images/doctor.png';
 import { useDispatch} from 'react-redux';
 import { logout } from '../actions/secretaryActions'
 import styled from 'styled-components';
-import { RiFileCopyLine } from "react-icons/ri";
+import { FiSettings } from "react-icons/fi";
 import {CgScreen} from "react-icons/cg"
 import { BiCalendarCheck } from "react-icons/bi";
 import { BsPeopleFill } from "react-icons/bs";
-import { VscCalendar } from "react-icons/vsc";
 import {MdLogout} from "react-icons/md";
 import Badge from './Badge';
 
-const AsideBar = (userInfo) => {
+const SideBarMed = (userInfo) => {
   const dispatch = useDispatch();
   const logou = () => dispatch(logout())
     return (
         <Container>
             <ProfileContainer>
-                <Avatar src={secretary}/>
+                <Avatar src={medecin}/>
                 <Name>{userInfo?.name}</Name>
-                <Badge content="Secreataire"/>
+                <Badge content="Médecin"/>
             </ProfileContainer>
             <LinksContainer>
             <Links>
-            <Link to='/secretaryZone/secretaryDashbord'>
+            <Link to='/MedecinZone/Accueil'>
                 <Lnk>
                     <CgScreen />
                     <h4>Tableau de Board</h4>
                 </Lnk>
               </Link>
-              <Link to='/secretaryZone/calendar'>
+              <Link to='/MedecinZone/Accueil'>
                 <Lnk>
-                  
-                    <VscCalendar />
-                    <h4>Calendrier</h4>
-                </Lnk>
-              </Link>
-              <Link to='/secretaryZone/ListRdv'>
-                <Lnk>
-                  
                     <BiCalendarCheck />
                     <h4>Listes Des Rendez-Vous</h4>
                 </Lnk>
               </Link>
-              <Link to='/secretaryZone/listePatients'>
+              <Link to='/MedecinZone/Accueil'>
                 <Lnk>
                     <BsPeopleFill />
                     <h4>Liste des patients</h4>
                 </Lnk>
               </Link>
-              <Link to='/secretaryZone/secretaryDashbord'>
+              <Link to='/MedecinZone/Accueil'>
                 <Lnk>
-                    <RiFileCopyLine />
-                    <h4>Comptabilité</h4>
+                    <FiSettings />
+                    <h4>Les paramétres</h4>
                 </Lnk>
               </Link>
             </Links>
@@ -207,4 +198,4 @@ const ContactContainer = styled.div`
 `;
 
 
-export default AsideBar;
+export default SideBarMed;

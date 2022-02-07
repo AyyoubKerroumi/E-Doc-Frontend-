@@ -16,7 +16,7 @@ const Welcome = () => {
             </div>
             {/*  Navigation Rounds */}
             <div className={styles.rounds}>
-                <Link to=''>
+                <Link to='/MedecinZone/login'>
                     <div className={styles.round}>
                         <img src={doctor} alt={styles.doctor}></img>
                         <h3 className={styles.roundTitle}>Médecin</h3>

@@ -48,7 +48,7 @@ function Appointment() {
 
     const makeRdvData = (data)=>{
         console.log(data?.M?.dispo);
-        let Rdv = new Array();
+        let Rdv = [];
         let dispoM = data?.M?.dispo;
         let dsipoS = data?.S?.dispo;
         console.log(dsipoS);
@@ -57,7 +57,7 @@ function Appointment() {
         let debutS = data?.S?.heure;
         let dispo = [];
         //ajouter les Rendez-Vous du matin
-        for(let i=0; i<dispoM.length; i++){
+        for(let i=0; i<dispoM?.length; i++){
             dispo.push(addDuree(debutM,dispoM[i]*duree));
             Rdv.push({
                 "M_S":'M',
@@ -67,7 +67,7 @@ function Appointment() {
             })
         }
         //ajouter les Rendez-Vous du Soir
-        for(let i=0; i<dsipoS.length; i++){
+        for(let i=0; i<dsipoS?.length; i++){
             dispo.push(addDuree(debutS,dsipoS[i]*duree));
             Rdv.push({
                 "M_S":'S',

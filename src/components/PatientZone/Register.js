@@ -81,7 +81,7 @@ const Register = () => {
             </form>
           </div>
         </div>
-        <div class="card-image">
+        <div class="card-image-pat">
         </div>
       </div>
   </section>

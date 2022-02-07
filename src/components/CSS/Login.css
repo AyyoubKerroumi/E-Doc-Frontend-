@@ -64,9 +64,23 @@ div.card-side > h3{
 
 div.card-image {
     width : 61%;
-    background : url(../../images/background.jpeg);
+    background : url(../../images/secreataire.jpg);
     background-size: cover;
     border-radius: 0px 10px 10px 0px;
+}
+
+div.card-image-pat{
+    width : 61%;
+    background : url(../../images/patient.jpg);
+    background-size: cover;
+    border-radius: 0px 10px 10px 0px;
+}
+
+div.card-image-doc{
+  width : 61%;
+  background : url(../../images/Doc.jpeg);
+  background-size: cover;
+  border-radius: 0px 10px 10px 0px;
 }
 
   

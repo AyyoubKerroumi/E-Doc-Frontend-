@@ -8,6 +8,11 @@ import ListPatient from './components/SecretaryZone/ListPatient';
 import Register from './components/PatientZone/Register'
 import Welcome from './components/Welcome'
 import Appointment from './components/SecretaryZone/Appointement';
+import LoginM from './components/MedecinZone/LoginM';
+import Accueil from './components/MedecinZone/Accueil';
+import DossMedic from './components/MedecinZone/DossMedic';
+import Patients from './components/MedecinZone/Patients';
+import Rdv from './components/MedecinZone/Rdv';
 const App = () => {
   return (
     <>
@@ -22,6 +27,11 @@ const App = () => {
           <Route path='/secretaryZone/ListRdv' element={<ListRdv />} />
           <Route path='/secretaryZone/listePatients' element={<ListPatient />} />
           <Route path='/secretaryZone/calendar' element={<Appointment />} />
+          <Route path='/MedecinZone/login' element={<LoginM />} />
+          <Route path='/MedecinZone/Accueil' element={<Accueil />} />
+          <Route path='/MedecinZone/DossiersMedicaux' element={<DossMedic />} />
+          <Route path='/MedecinZone/Patients' element={<Patients />} />
+          <Route path='/MedecinZone/Rdv' element={<Rdv />} />
         </Routes>
       </Router>
     </>
