@@ -9,6 +9,7 @@ function CardList() {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const userLogin = useSelector(state => state.userLogin)
     const { userInfo } = userLogin;
+    const [availables,setAvailable] = useState([]);
     const [D, setDate] = React.useState();
     const [dateValue,setDateValue] = React.useState("2022-01-01");
     const [RdvData, setRdvData] = useState([]);
@@ -17,26 +18,24 @@ function CardList() {
         { value: 'USA', name: 'USA' },
         { value: 'CANADA', name: 'CANADA' }            
     ];
-    const addDuree = (time,duree)=>{
-        const words = time.split(":");
-        let hh = parseInt(words[0]);
-        let mm = parseInt(words[1]);
-    
-        hh += parseInt(duree / 60);
-        duree %= 60;
-        mm += parseInt(duree);
-        if( mm >= 60){
-            hh += 1;
-            mm = mm % 60;
-        }
-        if( mm === 0)  
-            mm = '00'
-        if(hh < 10)
-            hh = `0${hh}`;
-        let rdv = `${hh}:${mm}`;
-        return rdv;
-    }
 
+    const onSubmit = (data) => {
+        console.log(data);
+        const body = {"jour":data?.jour,"M_S":data?.M_S,"Rid":data?.Rid,"ordre":data?.ordre}
+        console.log(body);
+        fetch("http://127.0.0.1/E-Doc/api/Secretaire/modiferRdv.php", {
+            method: "post",
+            headers: {
+                "Content-type": "application/json",
+                "Authorization": 'Bearer '+userInfo?.jwt
+            },
+            body: JSON.stringify(body)
+        })
+            .then(res => res.json())
+            .then(data => {
+                window.location.replace("http://localhost:3000/secretaryZone/ListRdv");
+            })
+    };
     const makeRdvData = (data)=>{
         //console.log(data?.M?.dispo);
         console.log(data);
@@ -47,7 +46,6 @@ function CardList() {
         }
         //ajouter les Rendez-Vous du Soir
         setRdvData(Rdv);
-        console.log(Rdv);
     }
 
     const changeDate = (ev)=>{
@@ -106,17 +104,19 @@ function CardList() {
                                 <td><Popup trigger={<button class="btn btn-primary">Modifier</button>} contentStyle={{ width: "200px", border: "none", background: "transparent" }} modal closeOnDocumentClick>
                                 <div className="popupDetails">
                                     <h5 style={{textAlign:"center"}}>Modifier le RDV</h5>
-                                    <form onSubmit>
-                                        <input className="takeInput" placeholder="mm/dd/yyyy"  {...register('jour',{ required: true })} />
+                                    <form onSubmit={handleSubmit(onSubmit)}>
+                                        <input className="takeInput" value={item.Rid} {...register('Rid',{ required: true })} ></input>
+                                        <br />
+                                        <input className="takeInput" placeholder="yyyy/mm/dd"  {...register('jour',{ required: true })} ></input>
+                                        <br />
+                                        <input className="takeInput" placeholder="ordre"  {...register('ordre',{ required: true })} ></input>
                                         <br />
                                         <br />
-                                        <select name="country" style={{marginLeft:"12rem"}}>
-                                            {countryData.map((e, key) => {
-                                                return <option key={key} value={e.value}>{e.name}</option>;
-                                            })}
+                                        <select {...register('M_S',{ required: true })} name="M_S" style={{marginLeft:"12rem"}}>
+                                                <option value="M">Matin</option>
+                                                <option value="S">Soir</option>
                                         </select>
                                         <br />
-                                        {errors.jour && "Entrer Une Date Valide"}
                                         <br />
                                         <div className="submitBtn">
                                             <input type="submit" value="Send" />

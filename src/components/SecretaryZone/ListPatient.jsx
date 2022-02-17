@@ -25,7 +25,7 @@ function ListPatient() {
                 console.log(res);
             }
         )
-    })
+    },[])
     useEffect(() => {
         if (!userInfo) {
         navigate('/')

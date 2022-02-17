@@ -1,9 +1,8 @@
 import React from 'react'
 import styled from 'styled-components';
 import { Link } from 'react-router-dom'
-import {CgProfile} from 'react-icons/cg';
 import {MdComputer} from 'react-icons/md'; 
-const Navbar = () => {
+const Header = () => {
   return (
       <Component>
         <Div>
@@ -11,8 +10,7 @@ const Navbar = () => {
             <h1>E-Doc</h1>
           </Title>
           <Nav>
-            <Log><CgProfile/><Link to='/PatientZone/login'>Login</Link></Log>
-            <Reg><MdComputer/><Link to='/PatientZone/register'>Register</Link></Reg>
+            <Reg><MdComputer/><Link to='/secretaryZone/secretaryDashbord'>Home</Link></Reg>
           </Nav>
         </Div>
       </Component>
@@ -24,6 +22,7 @@ const Component = styled.div`
     z-index: 1050;
     top:0;
     position:relative;
+    background-color:#3FEEE6;
 }
 `;
 const Div = styled.div`
@@ -88,4 +87,4 @@ a:hover{
 }
 `;
 
-export default Navbar
+export default Header

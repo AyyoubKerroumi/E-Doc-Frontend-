@@ -4,7 +4,7 @@ import medecin from '../images/doctor.png';
 import { useDispatch} from 'react-redux';
 import { logout } from '../actions/secretaryActions'
 import styled from 'styled-components';
-import { FiSettings } from "react-icons/fi";
+import { RiFileCopyLine} from "react-icons/ri";
 import {CgScreen} from "react-icons/cg"
 import { BiCalendarCheck } from "react-icons/bi";
 import { BsPeopleFill } from "react-icons/bs";
@@ -29,22 +29,22 @@ const SideBarMed = (userInfo) => {
                     <h4>Tableau de Board</h4>
                 </Lnk>
               </Link>
-              <Link to='/MedecinZone/Accueil'>
+              <Link to='/MedecinZone/Rdv'>
                 <Lnk>
                     <BiCalendarCheck />
-                    <h4>Listes Des Rendez-Vous</h4>
+                    <h4>Listes Des Rdv</h4>
                 </Lnk>
               </Link>
-              <Link to='/MedecinZone/Accueil'>
+              <Link to='/MedecinZone/Patients'>
                 <Lnk>
                     <BsPeopleFill />
                     <h4>Liste des patients</h4>
                 </Lnk>
               </Link>
-              <Link to='/MedecinZone/Accueil'>
+              <Link to='/MedecinZone/Comptabilite'>
                 <Lnk>
-                    <FiSettings />
-                    <h4>Les paramétres</h4>
+                    <RiFileCopyLine />
+                    <h4>Comptabilité</h4>
                 </Lnk>
               </Link>
             </Links>

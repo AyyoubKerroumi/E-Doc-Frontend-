@@ -11,6 +11,7 @@ function Appointment() {
     const navigate = useNavigate()
     const userLogin = useSelector(state => state.userLogin)
     const { userInfo } = userLogin
+    console.log(new Date(userInfo.expireAt))
     useEffect(() => {
         if (!userInfo) {
         navigate('/SecretaryZone/login')
@@ -21,10 +22,13 @@ function Appointment() {
     const months = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Aout", "Septembre", "Octobre", "Novembre", "Decembre"]
     const day = startDate.getDate();
     const month = months[startDate.getMonth()];
-    const month1 = startDate.getMonth();
+    let month1 = startDate.getMonth()+1;
+    if(month1 < 10){
+        month1 ='0'+month1;
+    }
     const year = startDate.getFullYear();
     const fullDate = day + " " + month + " " + year;
-    const fullDate1 = year + "/" + month1 + 1 + "/" + day;
+    const fullDate1 = year + "/" + month1 + "/" + day;
 
     const addDuree = (time,duree)=>{
         const words = time.split(":");

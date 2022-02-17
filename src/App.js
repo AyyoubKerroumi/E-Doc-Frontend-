@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route,Link } from 'react-router-dom'
 import Login from './components/SecretaryZone/Login';
 import LoginP from './components/PatientZone/LoginP';
 import Dashbord from './components/SecretaryZone/dashbord';
@@ -12,6 +12,9 @@ import LoginM from './components/MedecinZone/LoginM';
 import Accueil from './components/MedecinZone/Accueil';
 import DossMedic from './components/MedecinZone/DossMedic';
 import Patients from './components/MedecinZone/Patients';
+import FichePatient from './components/SecretaryZone/FichePatient';
+import Consultation from './components/MedecinZone/Consultation';
+import Comptabilite from './components/MedecinZone/Comptabilite';
 import Rdv from './components/MedecinZone/Rdv';
 const App = () => {
   return (
@@ -32,6 +35,9 @@ const App = () => {
           <Route path='/MedecinZone/DossiersMedicaux' element={<DossMedic />} />
           <Route path='/MedecinZone/Patients' element={<Patients />} />
           <Route path='/MedecinZone/Rdv' element={<Rdv />} />
+          <Route path="/secretaryZone/AddFiche" element={<FichePatient/>} />
+          <Route path="/MedecinZone/Comptabilite" element={<Comptabilite/>} />
+          <Route path="/MedecinZone/Consultation" element={<Consultation/>} />
         </Routes>
       </Router>
     </>

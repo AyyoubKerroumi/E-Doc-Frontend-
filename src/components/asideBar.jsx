@@ -32,28 +32,20 @@ const AsideBar = (userInfo) => {
               </Link>
               <Link to='/secretaryZone/calendar'>
                 <Lnk>
-                  
                     <VscCalendar />
                     <h4>Calendrier</h4>
                 </Lnk>
               </Link>
               <Link to='/secretaryZone/ListRdv'>
                 <Lnk>
-                  
                     <BiCalendarCheck />
-                    <h4>Listes Des Rendez-Vous</h4>
+                    <h4>Listes Des Rdv</h4>
                 </Lnk>
               </Link>
               <Link to='/secretaryZone/listePatients'>
                 <Lnk>
                     <BsPeopleFill />
                     <h4>Liste des patients</h4>
-                </Lnk>
-              </Link>
-              <Link to='/secretaryZone/secretaryDashbord'>
-                <Lnk>
-                    <RiFileCopyLine />
-                    <h4>Comptabilité</h4>
                 </Lnk>
               </Link>
             </Links>
@@ -63,34 +55,6 @@ const AsideBar = (userInfo) => {
             </ContactContainer>
       </LinksContainer>
         </Container>
-        // <div className="asideBar">
-        //     <div className="profile">
-        //             <img src={secretary} alt="secretary"></img>
-        //             <p>Secrétaire</p>
-        //     </div>
-        //     <div className="Navigation">
-        //         <div onClick={clickHandler} className="lineInfo l1">
-        //             <i class='chart-bar'></i>
-        //             <p>Tableau de Bord</p>
-        //         </div>
-        //         <div on onClick={clickHandler} className="lineInfo l2">
-        //             <i class='chart-bar'></i>
-        //             <p>Rendez Vous</p>
-        //         </div>
-        //         <div onClick={clickHandler}  className="lineInfo l3">
-        //             <i class='chart-bar'></i>
-        //             <p>Les Patients</p>
-        //         </div>
-        //         <div onClick={clickHandler} className="lineInfo l4">
-        //             <i class='chart-bar'></i>
-        //             <p>Comptabilité</p>
-        //         </div>
-        //         <div onClick={clickHandler} className="lineInfo l5">
-        //             <i class='chart-bar'></i>
-        //             <p>Se Déconnecter</p>
-        //         </div>
-        //     </div>
-        // </div>
     )
 }
 
